@@ -8,7 +8,11 @@
 
 CardContainer is simple Tinder-like card cosntainer with `UITableView`-like API.
 
-![](./Screenshots/CardExmaple.gif)
+|                  Vertical swiping                  |                   HorizontalSwiping                   |
+| :------------------------------------------------: | :---------------------------------------------------: |
+| ![Vertical swiping](./Screenshots/CardExmaple.gif) | ![Horizontal swiping](./Screenshots/CardExample1.gif) |
+
+
 
 
 
