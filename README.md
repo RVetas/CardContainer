@@ -16,7 +16,7 @@ CardContainer is simple Tinder-like card cosntainer with `UITableView`-like API.
 
 ### Manual installation
 
-Put all files from `CardContainer` folder into your project
+Put all files from `CardExample/CardContainer` folder into your project
 
 
 
