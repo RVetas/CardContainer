@@ -68,6 +68,12 @@ var horizontalInset: CGFloat
 var verticalInset: CGFloat
 ```
 
+#### CardContainerDatasource
+
+```swift
+// This method in your Controller defines the direcion: .horizontal or .vertical
+func swipeType() -> SwipeType
+```
 
 
 

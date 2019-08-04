@@ -54,7 +54,6 @@ extension ViewController: CardContainerDataSource {
         return .horizontal
     }
 
-    
 }
 
 extension ViewController: CardContainerSwipeDelegate {
