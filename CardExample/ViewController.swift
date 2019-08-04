@@ -49,8 +49,11 @@ extension ViewController: CardContainerDataSource {
     func emptyView() -> UIView? {
         return nil
     }
-
     
+    func swipeType() -> SwipeType {
+        return .horizontal
+    }
+
 }
 
 extension ViewController: CardContainerSwipeDelegate {
