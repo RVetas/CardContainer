@@ -38,6 +38,8 @@ class CardContainer: UIView {
     */
     private var numberOfCardsToShow = 0
     
+    internal var swipeType: SwipeType = .vertical
+    
     private var visibleCards: [SwipeableView] {
         return subviews as? [SwipeableView] ?? []
     }
@@ -73,6 +75,7 @@ class CardContainer: UIView {
         layoutIfNeeded()
         numberOfCardsToShow = datasource.numberOfCardsToShow()
         remainingCards = numberOfCardsToShow
+        swipeType = datasource.swipeType()
         
         for index in 0..<min(numberOfCardsToShow, cardsToBeVisible) {
             addCardView(cardView: datasource.card(at: index), atIndex: index)

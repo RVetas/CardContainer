@@ -12,6 +12,7 @@ protocol CardContainerDataSource: class {
     func numberOfCardsToShow() -> Int
     func card(at index: Int) -> SwipeableView
     func emptyView() -> UIView?
+    func swipeType() -> SwipeType
 }
 
 protocol CardContainerSwipeDelegate: class {
@@ -19,6 +20,7 @@ protocol CardContainerSwipeDelegate: class {
 }
 
 protocol SwipeableViewDelegate: class {
+    var swipeType: SwipeType { get }
     func swipeDidEnd(on view: SwipeableView, swipeDirection: SwipeDirection)
 }
 
@@ -28,5 +30,9 @@ protocol CardViewSwipeDelegate: class {
 }
 
 enum SwipeDirection: String {
-    case up, down
+    case up, down, left, right
+}
+
+enum SwipeType: String {
+    case vertical, horizontal
 }

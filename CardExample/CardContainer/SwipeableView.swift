@@ -9,18 +9,27 @@
 import UIKit
 
 class SwipeableView: UIView {
-    weak var delegate: SwipeableViewDelegate?
+    weak var delegate: SwipeableViewDelegate? {
+        didSet {
+            setSwipeType()
+        }
+    }
     /**
-     Vertical threshold. If vertical deviation > vertical threshold * card.height, card will be swiped.
+     Vertical threshold. If vertical deviation > vertical threshold * card.height, card will be swiped. Default is 0.33
      ## Vertical threshold must be in 0...1 ##
     */
     var verticalThreshold: CGFloat = 0.33
     
     /**
-     Horizontal threshold. If horizontal deviation > vertical threshold * card.width, card will be swiped.
+     Horizontal threshold. If horizontal deviation > vertical threshold * card.width, card will be swiped. Default is 0.5
      ## Horizontal threshold must be in 0...1 ##
      */
-    var horizontalThreshold: CGFloat = 0.25
+    var horizontalThreshold: CGFloat = 0.5
+    
+    /**
+     Swipe direction
+    */
+    var swipeType: SwipeType = .vertical
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -36,6 +45,11 @@ class SwipeableView: UIView {
         addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(sender:))))
     }
     
+    func setSwipeType() {
+        guard let delegate = delegate else { return }
+        swipeType = delegate.swipeType
+    }
+    
     func swipedLeft() {}
     func swipedRight() {}
     
@@ -44,7 +58,13 @@ class SwipeableView: UIView {
         guard let card = sender.view as? SwipeableView else { return }
         let point = sender.translation(in: self)
         let centerOfContainer = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
-        card.center = CGPoint(x: centerOfContainer.x, y: centerOfContainer.y + point.y)
+        
+        switch swipeType {
+        case .vertical:
+            card.center = CGPoint(x: centerOfContainer.x, y: centerOfContainer.y + point.y)
+        case .horizontal:
+            card.center = CGPoint(x: centerOfContainer.x + point.x, y: centerOfContainer.y)
+        }
         
         let distanceY = centerOfContainer.y - card.center.y
         let distanceX = point.x
@@ -58,43 +78,64 @@ class SwipeableView: UIView {
         let cardSwipedDown = (distanceY < 0) && (yThreshold < -distanceY)
         
         if sender.state == .ended {
-            if cardSwipedRight {
-                swipedRight()
-            }
-            if cardSwipedLeft {
-                swipedLeft()
-            }
-            
-            //Card swiped up
-            if cardSwipedUp {
-                UIView.animate(withDuration: 0.1, animations: {
-                    card.alpha = 0
-                    card.center = CGPoint(x: centerOfContainer.x, y: centerOfContainer.y + point.y - 250)
-                    self.layoutIfNeeded()
-                }, completion: { _ in
-                    self.delegate?.swipeDidEnd(on: card, swipeDirection: .up)
-                })
-                return
+            switch swipeType {
+            case .vertical:
+                if cardSwipedUp {
+                    UIView.animate(withDuration: 0.1, animations: {
+                        card.alpha = 0
+                        card.center = CGPoint(x: centerOfContainer.x, y: centerOfContainer.y + point.y - 250)
+                        self.layoutIfNeeded()
+                    }, completion: { _ in
+                        self.delegate?.swipeDidEnd(on: card, swipeDirection: .up)
+                    })
+                    return
+                }
+                else if cardSwipedDown {
+                    UIView.animate(withDuration: 0.1, animations: {
+                        card.center = CGPoint(x: centerOfContainer.x, y: centerOfContainer.y + point.y + 250)
+                        card.alpha = 0
+                        self.layoutIfNeeded()
+                    }, completion: { _ in
+                        self.delegate?.swipeDidEnd(on: card, swipeDirection: .down)
+                    })
+                    return
+                }
                 
-                //Card swiped down
-            } else if cardSwipedDown {
-                UIView.animate(withDuration: 0.1, animations: {
-                    card.center = CGPoint(x: centerOfContainer.x, y: centerOfContainer.y + point.y + 250)
-                    card.alpha = 0
+                //Card not swiped
+                UIView.animate(withDuration: 0.2) {
+                    card.transform = .identity
+                    card.center = centerOfContainer
                     self.layoutIfNeeded()
-                }, completion: { _ in
-                    self.delegate?.swipeDidEnd(on: card, swipeDirection: .down)
-                })
-                return
-            }
-            //Card not swiped
-            UIView.animate(withDuration: 0.2) {
-                card.transform = .identity
-                card.center = centerOfContainer
-                self.layoutIfNeeded()
+                }
+                
+            case .horizontal:
+                if cardSwipedLeft {
+                    UIView.animate(withDuration: 0.1, animations: {
+                        card.center = CGPoint(x: centerOfContainer.x + point.x - 250, y: centerOfContainer.y)
+                        card.alpha = 0
+                        self.layoutIfNeeded()
+                    }, completion: { _ in
+                        self.delegate?.swipeDidEnd(on: card, swipeDirection: .left)
+                    })
+                } else if cardSwipedRight {
+                    UIView.animate(withDuration: 0.1, animations: {
+                        card.center = CGPoint(x: centerOfContainer.x + point.x + 250, y: centerOfContainer.y)
+                        card.alpha = 0
+                        self.layoutIfNeeded()
+                    }, completion: { _ in
+                        self.delegate?.swipeDidEnd(on: card, swipeDirection: .right)
+                    })
+                }
+                
+                //Card not swiped
+                UIView.animate(withDuration: 0.2) {
+                    card.transform = .identity
+                    card.center = centerOfContainer
+                    self.layoutIfNeeded()
+                }
+                
             }
         }
-        
     }
     
 }
