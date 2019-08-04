@@ -10,6 +10,17 @@ import UIKit
 
 class SwipeableView: UIView {
     weak var delegate: SwipeableViewDelegate?
+    /**
+     Vertical threshold. If vertical deviation > vertical threshold * card.height, card will be swiped.
+     ## Vertical threshold must be in 0...1 ##
+    */
+    var verticalThreshold: CGFloat = 0.33
+    
+    /**
+     Horizontal threshold. If horizontal deviation > vertical threshold * card.width, card will be swiped.
+     ## Horizontal threshold must be in 0...1 ##
+     */
+    var horizontalThreshold: CGFloat = 0.25
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -38,13 +49,13 @@ class SwipeableView: UIView {
         let distanceY = centerOfContainer.y - card.center.y
         let distanceX = point.x
         
-        let verticalThreshold = card.frame.height * 0.33
-        let horizontalThreshold = card.frame.width * 0.25
+        let yThreshold = card.frame.height * verticalThreshold
+        let xThreshold = card.frame.width * horizontalThreshold
         
-        let cardSwipedRight = (distanceX > 0) && (distanceX > horizontalThreshold)
-        let cardSwipedLeft = (distanceX < 0) && (-distanceX > horizontalThreshold)
-        let cardSwipedUp = (distanceY > 0) && (verticalThreshold < distanceY)
-        let cardSwipedDown = (distanceY < 0) && (verticalThreshold < -distanceY)
+        let cardSwipedRight = (distanceX > 0) && (distanceX > xThreshold)
+        let cardSwipedLeft = (distanceX < 0) && (-distanceX > xThreshold)
+        let cardSwipedUp = (distanceY > 0) && (yThreshold < distanceY)
+        let cardSwipedDown = (distanceY < 0) && (yThreshold < -distanceY)
         
         if sender.state == .ended {
             if cardSwipedRight {

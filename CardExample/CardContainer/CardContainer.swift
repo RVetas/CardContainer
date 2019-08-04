@@ -9,6 +9,7 @@
 import UIKit
 
 class CardContainer: UIView {
+    // MARK: - Properties
     /**
      Number of cards visible in container
      
@@ -91,7 +92,7 @@ class CardContainer: UIView {
     }
     
     /**
-     This methods creates card view's frame based on index of a card
+     This method creates card view's frame based on index of a card
     */
     private func addCardFrame(index: Int, cardView: SwipeableView) {
         var cardViewFrame = bounds
@@ -105,6 +106,9 @@ class CardContainer: UIView {
         cardView.frame = cardViewFrame
     }
     
+    /**
+     This method removes all card views from container
+    */
     private func removeAllCardViews() {
         for cardView in visibleCards {
             cardView.removeFromSuperview()
