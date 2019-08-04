@@ -10,12 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var cardContainer: CardContainer!
+    @IBOutlet weak var reloadButton: UIButton!
     let colors: [UIColor] = [.black, .blue, .brown, .orange, .yellow, .magenta, .purple, .green, .gray, .red]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cardContainer.delegate = self
-        cardContainer.backgroundColor = .clear
+        setUpUI()
     }
     
     override func viewDidLayoutSubviews() {
@@ -23,6 +24,14 @@ class ViewController: UIViewController {
         cardContainer.dataSource = self
     }
 
+    @IBAction func reloadButtonClicked(_ sender: Any) {
+        cardContainer.reloadData()
+    }
+    
+    func setUpUI() {
+        cardContainer.backgroundColor = .clear
+        reloadButton.layer.cornerRadius = 12
+    }
 }
 
 extension ViewController: CardContainerDataSource {
@@ -32,6 +41,7 @@ extension ViewController: CardContainerDataSource {
     
     func card(at index: Int) -> SwipeableView {
         let card = SwipeableView()
+        card.layer.cornerRadius = 27
         card.backgroundColor = colors[index]
         return card
     }

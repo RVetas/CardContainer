@@ -13,7 +13,6 @@ class SwipeableView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        self.layer.cornerRadius = 16
         addPanGestureOnCards()
     }
     
