@@ -11,6 +11,10 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var cardContainer: CardContainer!
     @IBOutlet weak var reloadButton: UIButton!
+    @IBOutlet weak var directionButton: UIButton!
+    
+    var swipeDirection: SwipeType = .vertical
+    
     let colors: [UIColor] = [.black, .blue, .brown, .orange, .yellow, .magenta, .purple, .green, .gray, .red]
     
     override func viewDidLoad() {
@@ -28,9 +32,20 @@ class ViewController: UIViewController {
         cardContainer.reloadData()
     }
     
+    @IBAction func directionButtonClicked(_ sender: Any) {
+        if swipeDirection == .vertical {
+            swipeDirection = .horizontal
+        } else {
+            swipeDirection = .vertical
+        }
+        
+        cardContainer.reloadData()
+    }
+    
     func setUpUI() {
         cardContainer.backgroundColor = .clear
         reloadButton.layer.cornerRadius = 12
+        directionButton.layer.cornerRadius = 12
     }
 }
 
@@ -51,7 +66,7 @@ extension ViewController: CardContainerDataSource {
     }
     
     func swipeType() -> SwipeType {
-        return .horizontal
+        return swipeDirection
     }
 
 }
