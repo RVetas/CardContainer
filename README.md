@@ -2,11 +2,15 @@
 
 **If you like CardContainer, give it a ⭐**
 
+
+
 ## Overview
 
-CardContainer is simple Tinder-like card container with `UITableView`-like API.
+CardContainer is simple Tinder-like card cosntainer with `UITableView`-like API.
 
 ![](./Screenshots/CardExmaple.gif)
+
+
 
 ## Installation
 
@@ -14,9 +18,22 @@ CardContainer is simple Tinder-like card container with `UITableView`-like API.
 
 Put all files from `CardContainer` folder into your project
 
+
+
 ### Carthage
 
-Soon...
+You can install Carthage with [Homebrew](https://brew.sh) using following commands
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+To integrate CardContainer into your project using Carthage, add it to your Cartfile
+
+```ogdl
+github "Vetas-R/CardContainer"
+```
 
 
 
@@ -57,4 +74,6 @@ var verticalInset: CGFloat
 ## Providing custom views
 
 To provide your own cards to `CardContainer` you have to subclass `SwipeableView` .
+
+*e.g. [Creating a Custom View From a XIB](https://medium.com/better-programming/swift-3-creating-a-custom-view-from-a-xib-ecdfe5b3a960)*
 
