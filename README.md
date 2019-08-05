@@ -6,7 +6,7 @@
 
 ## Overview
 
-CardContainer is simple Tinder-like card cosntainer with `UITableView`-like API.
+CardContainer is a simple Tinder-like card cosntainer with `UITableView`-like API.
 
 |                  Vertical swiping                  |                   HorizontalSwiping                   |
 | :------------------------------------------------: | :---------------------------------------------------: |
@@ -26,30 +26,23 @@ Put all files from `CardExample/CardContainer` folder into your project
 
 ### Carthage
 
-You can install Carthage with [Homebrew](https://brew.sh) using following commands
-
-```bash
-$ brew update
-$ brew install carthage
-```
-
-To integrate CardContainer into your project using Carthage, add it to your Cartfile
-
-```ogdl
-github "Vetas-R/CardContainer"
-```
+*Soon...*
 
 
 
 ## Usage
 
 1. Place a `view`  and change its class to `CardContainer`
-3. Implement `CardContainerDataSource` in your Controller
-4. Make your Controller a delegate of `CardContainer` view.
 
-### Customisation
+   ![image-20190805173006508](./Screenshots/CardExample2.png)
 
-#### SwipeableView
+2. Implement `CardContainerDataSource` in your Controller (check the example project).
+
+3. Make your Controller a delegate of `CardContainer` view (check the example project).
+
+## Customisation
+
+### SwipeableView
 
 ```swift
 // Vertical threshold for swiping a view (in percents of view's height)
@@ -59,7 +52,7 @@ var verticalThreshold: CGFloat
 var horizontalThreshold: CGFloat
 ```
 
-#### CardContainer
+### CardContainer
 
 ```swift
 // Number of cards visible in a container
@@ -72,18 +65,21 @@ var horizontalInset: CGFloat
 var verticalInset: CGFloat
 ```
 
-#### CardContainerDatasource
+### CardContainerDatasource
 
 ```swift
-// This method in your Controller defines the direcion: .horizontal or .vertical
+// This method in your Controller defines the swipe direcion: .horizontal or .vertical
 func swipeType() -> SwipeType
 ```
 
-
-
-## Providing custom views
+### Providing custom views
 
 To provide your own cards to `CardContainer` you have to subclass `SwipeableView` .
 
 *e.g. [Creating a Custom View From a XIB](https://medium.com/better-programming/swift-3-creating-a-custom-view-from-a-xib-ecdfe5b3a960)*
 
+
+
+## License
+
+CardContainer is available under the MIT license.

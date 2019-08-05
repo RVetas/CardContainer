@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F8B0AB3422F7440C00DE1CF6 /* CardContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = F8B0AB3222F7440C00DE1CF6 /* CardContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F8B0AB3822F7442800DE1CF6 /* CardContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F78D4B22F708980024037B /* CardContainer.swift */; };
-		F8B0AB3922F7442800DE1CF6 /* CardProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F78D4922F708980024037B /* CardProtocols.swift */; };
-		F8B0AB3A22F7442800DE1CF6 /* SwipeableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F78D4A22F708980024037B /* SwipeableView.swift */; };
 		F8F78D3722F708730024037B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F78D3622F708730024037B /* AppDelegate.swift */; };
 		F8F78D3922F708730024037B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F78D3822F708730024037B /* ViewController.swift */; };
 		F8F78D3C22F708730024037B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8F78D3A22F708730024037B /* Main.storyboard */; };
@@ -35,9 +31,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		F8B0AB3022F7440C00DE1CF6 /* CardContainer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CardContainer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F8B0AB3222F7440C00DE1CF6 /* CardContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardContainer.h; sourceTree = "<group>"; };
-		F8B0AB3322F7440C00DE1CF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8F78D3322F708730024037B /* CardExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8F78D3622F708730024037B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8F78D3822F708730024037B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -51,13 +44,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F8B0AB2D22F7440C00DE1CF6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F8F78D3022F708730024037B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -68,20 +54,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F8B0AB3122F7440C00DE1CF6 /* CardContainer */ = {
-			isa = PBXGroup;
-			children = (
-				F8B0AB3222F7440C00DE1CF6 /* CardContainer.h */,
-				F8B0AB3322F7440C00DE1CF6 /* Info.plist */,
-			);
-			path = CardContainer;
-			sourceTree = "<group>";
-		};
 		F8F78D2A22F708720024037B = {
 			isa = PBXGroup;
 			children = (
 				F8F78D3522F708730024037B /* CardExample */,
-				F8B0AB3122F7440C00DE1CF6 /* CardContainer */,
 				F8F78D3422F708730024037B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,7 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				F8F78D3322F708730024037B /* CardExample.app */,
-				F8B0AB3022F7440C00DE1CF6 /* CardContainer.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -121,36 +96,7 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		F8B0AB2B22F7440C00DE1CF6 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F8B0AB3422F7440C00DE1CF6 /* CardContainer.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		F8B0AB2F22F7440C00DE1CF6 /* CardContainer */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F8B0AB3522F7440C00DE1CF6 /* Build configuration list for PBXNativeTarget "CardContainer" */;
-			buildPhases = (
-				F8B0AB2B22F7440C00DE1CF6 /* Headers */,
-				F8B0AB2C22F7440C00DE1CF6 /* Sources */,
-				F8B0AB2D22F7440C00DE1CF6 /* Frameworks */,
-				F8B0AB2E22F7440C00DE1CF6 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = CardContainer;
-			productName = CardContainer;
-			productReference = F8B0AB3022F7440C00DE1CF6 /* CardContainer.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		F8F78D3222F708730024037B /* CardExample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F8F78D4522F708740024037B /* Build configuration list for PBXNativeTarget "CardExample" */;
@@ -179,9 +125,6 @@
 				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = VR;
 				TargetAttributes = {
-					F8B0AB2F22F7440C00DE1CF6 = {
-						CreatedOnToolsVersion = 10.3;
-					};
 					F8F78D3222F708730024037B = {
 						CreatedOnToolsVersion = 10.3;
 					};
@@ -201,19 +144,11 @@
 			projectRoot = "";
 			targets = (
 				F8F78D3222F708730024037B /* CardExample */,
-				F8B0AB2F22F7440C00DE1CF6 /* CardContainer */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		F8B0AB2E22F7440C00DE1CF6 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F8F78D3122F708730024037B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -227,16 +162,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		F8B0AB2C22F7440C00DE1CF6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F8B0AB3822F7442800DE1CF6 /* CardContainer.swift in Sources */,
-				F8B0AB3922F7442800DE1CF6 /* CardProtocols.swift in Sources */,
-				F8B0AB3A22F7442800DE1CF6 /* SwipeableView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F8F78D2F22F708730024037B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -271,64 +196,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		F8B0AB3622F7440C00DE1CF6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = W4797A45Y9;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = CardContainer/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = VR.CardContainer;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		F8B0AB3722F7440C00DE1CF6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = W4797A45Y9;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = CardContainer/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = VR.CardContainer;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		F8F78D4322F708740024037B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -486,15 +353,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F8B0AB3522F7440C00DE1CF6 /* Build configuration list for PBXNativeTarget "CardContainer" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F8B0AB3622F7440C00DE1CF6 /* Debug */,
-				F8B0AB3722F7440C00DE1CF6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		F8F78D2E22F708720024037B /* Build configuration list for PBXProject "CardExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
