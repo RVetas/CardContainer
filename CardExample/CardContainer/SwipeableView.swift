@@ -43,6 +43,7 @@ class SwipeableView: UIView {
     func addPanGestureOnCards() {
         self.isUserInteractionEnabled = true
         addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(sender:))))
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(sender:))))
     }
     
     func setSwipeType() {
@@ -52,6 +53,10 @@ class SwipeableView: UIView {
     
     func swipedLeft() {}
     func swipedRight() {}
+    
+    @objc func handleTapGesture(sender: UITapGestureRecognizer) {
+        delegate?.selected(view: self)
+    }
     
     // MARK: - Handlers
     @objc func handlePanGesture(sender: UIPanGestureRecognizer) {

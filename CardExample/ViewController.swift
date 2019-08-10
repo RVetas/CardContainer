@@ -61,19 +61,28 @@ extension ViewController: CardContainerDataSource {
         return card
     }
     
-    func emptyView() -> UIView? {
-        return nil
-    }
-    
     func swipeType() -> SwipeType {
         return swipeDirection
     }
 
 }
 
-extension ViewController: CardContainerSwipeDelegate {
+extension ViewController: CardContainerDelegate {
     func card(_ view: SwipeableView, swiped direction: SwipeDirection) {
-        print("\(String(describing: view.backgroundColor)) card swiped \(direction)")
+        if let color = view.backgroundColor {
+            print("\(color) card swiped \(direction)")
+        }
     }
     
+    func cardContainer(didSelect view: SwipeableView, at index: Int) {
+        print("Card at index \(index) was selected")
+    }
+    
+    func cardContainer(willDisplay view: SwipeableView, at index: Int) {
+        print("Card container will display card at index: \(index)")
+    }
+    
+    func card(_ view: SwipeableView, swiped direction: SwipeDirection, at index: Int) {
+        print("\(index)th card swiped \(direction)")
+    }
 }

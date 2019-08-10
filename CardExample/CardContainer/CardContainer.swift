@@ -50,7 +50,7 @@ class CardContainer: UIView {
         }
     }
     
-    weak var delegate: CardContainerSwipeDelegate?
+    weak var delegate: CardContainerDelegate?
     
     // MARK: - Init
     override init(frame: CGRect) {
@@ -90,6 +90,10 @@ class CardContainer: UIView {
         cardView.delegate = self
         addCardFrame(index: index, cardView: cardView)
         cardViews.append(cardView)
+        
+        let cardIndex = numberOfCardsToShow - remainingCards
+        delegate?.cardContainer(willDisplay: cardView, at: cardIndex)
+        
         insertSubview(cardView, at: 0)
         remainingCards -= 1
     }
@@ -122,10 +126,18 @@ class CardContainer: UIView {
 }
 
 extension CardContainer: SwipeableViewDelegate {
+    func selected(view: SwipeableView) {
+        guard let datasource = dataSource else { return }
+        let index = datasource.numberOfCardsToShow() - remainingCards - cardsToBeVisible
+        delegate?.cardContainer(didSelect: view, at: index)
+    }
+    
     func swipeDidEnd(on view: SwipeableView, swipeDirection: SwipeDirection) {
         guard let datasource = dataSource else { return }
         view.removeFromSuperview()
+        let cardIndex = datasource.numberOfCardsToShow() - remainingCards - cardsToBeVisible
         delegate?.card(view, swiped: swipeDirection)
+        delegate?.card(view, swiped: swipeDirection, at: cardIndex)
         
         if remainingCards > 0 {
             let newIndex = datasource.numberOfCardsToShow() - remainingCards
