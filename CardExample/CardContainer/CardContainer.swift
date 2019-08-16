@@ -111,6 +111,7 @@ class CardContainer: UIView {
         cardViewFrame.origin.y += verticalInset
         
         cardView.frame = cardViewFrame
+        delegate?.cardContainer(willDisplay: cardView, with: index)
     }
     
     /**

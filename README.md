@@ -92,6 +92,9 @@ func card(_ view: SwipeableView, swiped direction: SwipeDirection, at index: Int
 // This method is called when the view is about to appear in the bottom of the card stack.
 func cardContainer(willDisplay view: SwipeableView, at index: Int)
 
+//innerIndex is index in visible card stack. This method is called when the view is about to appear in the bottom of the card stack.
+func cardContainer(willDisplay view: SwipeableView, with innerIndex: Int)
+
 // Tells the delegate that the specified view is selected
 func cardContainer(didSelect view: SwipeableView, at index: Int)
 ```
