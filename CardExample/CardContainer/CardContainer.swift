@@ -33,6 +33,8 @@ class CardContainer: UIView {
     */
     private var remainingCards = 0
     
+    private var cardIndex = 0
+    
     /**
      Number of all cards provided by datasource
     */
@@ -75,6 +77,7 @@ class CardContainer: UIView {
         layoutIfNeeded()
         numberOfCardsToShow = datasource.numberOfCardsToShow()
         remainingCards = numberOfCardsToShow
+        cardIndex = 0
         swipeType = datasource.swipeType()
         
         for index in 0..<min(numberOfCardsToShow, cardsToBeVisible) {
@@ -128,17 +131,17 @@ class CardContainer: UIView {
 
 extension CardContainer: SwipeableViewDelegate {
     func selected(view: SwipeableView) {
-        guard let datasource = dataSource else { return }
-        let index = datasource.numberOfCardsToShow() - remainingCards - cardsToBeVisible
-        delegate?.cardContainer(didSelect: view, at: index)
+        delegate?.cardContainer(didSelect: view, at: cardIndex)
     }
     
     func swipeDidEnd(on view: SwipeableView, swipeDirection: SwipeDirection) {
         guard let datasource = dataSource else { return }
         view.removeFromSuperview()
-        let cardIndex = datasource.numberOfCardsToShow() - remainingCards - cardsToBeVisible
+        
         delegate?.card(view, swiped: swipeDirection)
+        
         delegate?.card(view, swiped: swipeDirection, at: cardIndex)
+        cardIndex += 1
         
         if remainingCards > 0 {
             let newIndex = datasource.numberOfCardsToShow() - remainingCards
